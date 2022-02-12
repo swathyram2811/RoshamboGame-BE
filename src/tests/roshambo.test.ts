@@ -11,17 +11,17 @@ describe("Roshambo Game - Test Cases", () => {
   });
 
   it("Game Parameters - Missing Options", async () => {
-    const result = await request.get("/api/gameResult?comp1=scissor").send();
+    const result = await request.get("/api/gameResult?val1=scissor").send();
     expect(result.status).to.equal(400);
     expect(result.body).not.to.be.empty;
     expect(result.body.error).to.equal(
-      "Missing parameters comp1 or comp2 to validate"
+      "Missing parameters val1 or val2 to validate"
     );
   });
 
   it("Game Parameters - Invalid Options", async () => {
     const result = await request
-      .get("/api/gameResult?comp1=scisor&comp2=paper")
+      .get("/api/gameResult?val1=scisor&val2=paper")
       .send();
     expect(result.status).to.equal(400);
     expect(result.body).not.to.be.empty;
@@ -30,25 +30,25 @@ describe("Roshambo Game - Test Cases", () => {
 
   it("Game Result - Success (Combination 1)", async () => {
     const result = await request
-      .get("/api/gameResult?comp1=rock&comp2=paper")
+      .get("/api/gameResult?val1=rock&val2=paper")
       .send();
     expect(result.status).to.equal(200);
     expect(result.body).not.to.be.empty;
-    expect(result.body.result).to.equal("comp2");
+    expect(result.body.result).to.equal("val2");
   });
 
   it("Game Result - Success (Combination 2)", async () => {
     const result = await request
-      .get("/api/gameResult?comp1=rock&comp2=scissor")
+      .get("/api/gameResult?val1=rock&val2=scissor")
       .send();
     expect(result.status).to.equal(200);
     expect(result.body).not.to.be.empty;
-    expect(result.body.result).to.equal("comp1");
+    expect(result.body.result).to.equal("val1");
   });
 
   it("Game Result - Success (Combination 3)", async () => {
     const result = await request
-      .get("/api/gameResult?comp1=rock&comp2=rock")
+      .get("/api/gameResult?val1=rock&val2=rock")
       .send();
     expect(result.status).to.equal(200);
     expect(result.body).not.to.be.empty;
