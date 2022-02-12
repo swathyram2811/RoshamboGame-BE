@@ -1,5 +1,5 @@
 import express from "express";
-import { Options } from "./roshambo.interface";
+import { Options, Query } from "./roshambo.interface";
 
 class RoshamboMiddleware {
   validateComputerOptions(
@@ -7,18 +7,21 @@ class RoshamboMiddleware {
     res: express.Response,
     next: express.NextFunction
   ) {
-    const comp1: any = req.query.comp1;
-    const comp2: any = req.query.comp2;
+    const { comp1, comp2 } = req.query as unknown as Query;
     if (comp1 && comp2) {
       const values: string[] = Object.values(Options);
-      if (!(values.includes(comp1) && values.includes(comp2))) {
+      if (!values.includes(comp1)) {
         res.status(400).send({
-          error: "Invalid options sent in parameters",
+          error: `Invalid option ${comp1}`,
+        });
+      } else if (!values.includes(comp2)) {
+        res.status(400).send({
+          error: `Invalid option ${comp2}`,
         });
       } else next();
     } else {
       res.status(400).send({
-        error: "Missing options to validate",
+        error: "Missing parameters comp1 or comp2 to validate",
       });
     }
   }

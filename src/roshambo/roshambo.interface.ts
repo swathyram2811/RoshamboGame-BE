@@ -9,3 +9,7 @@ export interface Query {
   comp1: Options;
   comp2: Options;
 }
+
+export interface Result {
+  result: string;
+}

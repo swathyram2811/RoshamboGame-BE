@@ -1,15 +1,23 @@
 import { keyWinsRule } from "../constants/rules";
-import { Options } from "./roshambo.interface";
+import { Options, Result } from "./roshambo.interface";
 
 class RoshamboService {
-  getResult(comp1: Options, comp2: Options): Promise<string> {
+  getResult(comp1: Options, comp2: Options): Promise<Result> {
     return new Promise((resolve, reject) => {
       try {
+        const values: string[] = keyWinsRule[comp1];
         if (comp1 == comp2) {
-          resolve("Match Tied");
-        } else if (keyWinsRule[comp1].includes(comp2)) {
-          resolve("Computer1");
-        } else resolve("Computer2");
+          resolve({
+            result: "Tied",
+          });
+        } else if (values.includes(comp2)) {
+          resolve({
+            result: "comp1",
+          });
+        } else
+          resolve({
+            result: "comp2",
+          });
       } catch (error) {
         console.log(error);
         reject(error);
