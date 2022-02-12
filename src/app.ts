@@ -6,12 +6,15 @@ dotenv.config();
 
 import { config } from "./config";
 import { Routes } from "./common/common.routes";
+import { Roshambo } from "./roshambo/roshambo.routes";
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
 const routes: Routes[] = [];
 
 app.use(express.json());
+
+routes.push(new Roshambo(app));
 
 const health = `Express running at http://localhost:${config.SERVER_PORT}`;
 
