@@ -4,8 +4,8 @@ import roshamboService from "./roshambo.service";
 
 class RoshamboController {
   async getResult(req: express.Request, res: express.Response) {
-    const { val1, val2 } = req.query as unknown as Query;
-    const result: Result = await roshamboService.getResult(val1, val2);
+    const { play1, play2 } = req.query as unknown as Query;
+    const result: Result = await roshamboService.getResult(play1, play2);
     res.status(200).json(result);
   }
 }

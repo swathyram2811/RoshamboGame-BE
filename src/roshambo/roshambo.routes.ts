@@ -10,7 +10,7 @@ export class Roshambo extends Routes {
 
   configureRoutes() {
     this.app
-      .route("/api/gameResult")
+      .route("/api/getResult")
       .all(roshamboMiddleware.validateComputerOptions)
       .get(roshamboController.getResult);
 

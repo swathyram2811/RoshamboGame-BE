@@ -1,14 +1,14 @@
 export enum Options {
-  // add enums here for new game rule
-  ROCK = "rock",
-  PAPER = "paper",
-  SCISSOR = "scissor",
-  PENCIL = "pencil",
+  // add enums here for new options
+  ROCK = "ROCK",
+  PAPER = "PAPER",
+  SCISSOR = "SCISSOR",
+  PENCIL = "PENCIL",
 }
 
 export interface Query {
-  val1: Options;
-  val2: Options;
+  play1: Options;
+  play2: Options;
 }
 
 export interface Result {
