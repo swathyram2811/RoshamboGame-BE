@@ -1,5 +1,5 @@
 export enum Options {
-  // add enums here for new options
+  // add enums here for new Options
   ROCK = "ROCK",
   PAPER = "PAPER",
   SCISSOR = "SCISSOR",
