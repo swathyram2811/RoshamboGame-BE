@@ -4,7 +4,7 @@ Roshambo Game API is created.
 
 ## Rules
 
-Current Game rule is mentioned in src/ constants/rules.ts file
+Current Game rule is mentioned in src/constants/rules.ts file
 
 If you want to add/update rule, please add it in rules.ts file.
 
