@@ -23,4 +23,6 @@ Runs the server in the development mode on http://localhost:5000 \
 
 ### `Run Test Cases`
 
+- npm test
+
 Launches the test runner.\
